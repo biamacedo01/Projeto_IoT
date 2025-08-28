@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Sensor;
 
+use App\Models\Ambiente;
 use App\Models\Sensor;
 use Livewire\Component;
 
@@ -15,7 +16,7 @@ class SensorCreate extends Component
         // $this->validate();
        
         Sensor::create([
-            'ambiente_id' => $this->ambiente->id,
+            'ambiente_id' => $this->ambiente_id,
             'descricao' => $this->descricao,
             'codigo' => $this->codigo,
             'tipo' => $this->tipo,
@@ -28,6 +29,7 @@ class SensorCreate extends Component
 
     public function render()
     {
-        return view('livewire.sensor.sensor-create');
+        $ambientes = Ambiente::all();
+        return view('livewire.sensor.sensor-create', compact('ambientes'));
     }
 }

@@ -8,7 +8,7 @@ use Livewire\WithPagination;
 
 class SensorList extends Component
 {
-     use WithPagination;
+    use WithPagination;
 
     public $search = '';
     public $perPage = 10;
@@ -21,16 +21,12 @@ class SensorList extends Component
     public function render()
 
     {
-        $sensor = Sensor::all();
+        $sensores = Sensor::where('codigo', 'like', "%{$this->search}%")
+            ->orWhere('tipo', 'like', "%{$this->search}%")
+            ->orWhere('descricao', 'like', "%{$this->search}%")
+            ->orWhere('status', 'like', "%{$this->search}%")
+            ->paginate($this->perPage);
 
-        $sensor = Sensor::where('nome', 'like', "%{$this->search}%")
-        ->orWhere('descricao', 'like', "%{$this->search}%" )
-        ->orWhere('status', 'like', "%{$this->search}%" )
-        ->paginate($this->perPage);
-
-        return view('livewire.sensor.sensor-list', compact('amsensorbiente'));
+        return view('livewire.sensor.sensor-list', compact('sensores'));
     }
-
-
- 
 }
