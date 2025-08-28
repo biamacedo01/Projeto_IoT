@@ -20,6 +20,7 @@ class AmbienteCreate extends Component
         ]);
 
         session()->flash('success','Cadastro Realizado');
+        return redirect()->route('ambiente.list');
     }
 
 
