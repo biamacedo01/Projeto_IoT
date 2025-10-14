@@ -1,8 +1,12 @@
 <?php
 
+use App\Http\Controllers\RegistroController;
+use App\Http\Controllers\DispositivoController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/user', function (Request $request) {
-    return $request->user();
-})->middleware('auth:sanctum');
+Route::post('registro/create', [RegistroController::class, "store"]);
+
+Route::get('sensor/show', [DispositivoController::class, "show"]);
+
+Route::get('sensor/update', [DispositivoController::class, "update"]);

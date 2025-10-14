@@ -5,6 +5,7 @@ use App\Livewire\Ambiente\AmbienteCreate;
 use App\Livewire\Ambiente\AmbienteEdit;
 use App\Livewire\Ambiente\AmbienteList;
 use App\Livewire\Dashboard;
+use App\Livewire\Dispositivo\DispositivoList;
 use App\Livewire\Sensor\SensorCreate;
 use App\Livewire\Sensor\SensorEdit;
 use App\Livewire\Sensor\SensorList;
@@ -22,6 +23,8 @@ Route::prefix('sensor')->group(function (){
     Route::get('/index',SensorList::class)->name('sensor.index');
     Route::get('/create',SensorCreate::class)->name('sensor.create');
     Route::get('/edit',SensorEdit::class)->name('sensor.edit');
+
+    Route::get('/listStatus',DispositivoList::class)->name('sensor.list');
 });
 
 Route::get('/', Dashboard::class);
