@@ -20,7 +20,7 @@
                 <div class="card-header d-flex justify-content-between alingn-items-center text-white"
                     style="background-color: blueviolet">
                     <h5 class="mb-0">Ambientes</h5>
-                    <a href="{{ route('ambiente.edit') }}" class="btn btn-light btn-sm">
+                    <a href="{{ route('ambiente.create') }}" class="btn btn-light btn-sm">
                         <i class="bi bi-plus-circle"></i>
                         Novo Cadastro
                     </a>

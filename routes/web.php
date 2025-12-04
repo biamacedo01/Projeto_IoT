@@ -4,18 +4,22 @@
 use App\Livewire\Ambiente\AmbienteCreate;
 use App\Livewire\Ambiente\AmbienteEdit;
 use App\Livewire\Ambiente\AmbienteList;
+use App\Livewire\Auth\Login;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/ambiente/create', AmbienteCreate::class)->name('ambiente.create');
-Route::get('/ambiente/list', AmbienteList::class)->name('ambiente.list');
-Route::get('/ambiente/edit/{id}', AmbienteEdit::class)->name('ambiente.edit');
+Route::prefix('ambiente')->group(function (){
+Route::get('/create', AmbienteCreate::class)->name('ambiente.create');
+Route::get('/list', AmbienteList::class)->name('ambiente.index');
+Route::get('/edit/{id}', AmbienteEdit::class)->name('ambiente.edit');
+});
+
 
 
 use App\Livewire\Dashboard;
 use App\Livewire\Sensor\SensorCreate;
 use App\Livewire\Sensor\SensorEdit;
 use App\Livewire\Sensor\SensorList;
-use Illuminate\Support\Facades\Route;
+
 
 
 Route::prefix('sensor')->group(function (){
@@ -24,5 +28,6 @@ Route::prefix('sensor')->group(function (){
     Route::get('/edit',SensorEdit::class)->name('sensor.edit');
 });
 
-Route::get('/', Dashboard::class);
+Route::get('/', Dashboard::class)->name('dashboard');
 
+Route::get('/login', Login::class)->name('login');
